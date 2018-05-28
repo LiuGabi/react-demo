@@ -1,4 +1,4 @@
-// Webpack version 3.8.1 及以上
+// Webpack version 4.8.3 及以上
 const webpack = require('webpack');
 const path  = require('path');
 
@@ -9,23 +9,23 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 // 设置统一插件
 const plugins = [
-	new webpack.DefinePlugin({
-		'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-	}),
+	// new webpack.DefinePlugin({
+	// 	'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+	// }),
 	new ExtractTextPlugin({
 		filename: "static/css/[name].[hash].css",
 		disable: false,
 		allChunks: true
 	}),
-	new HtmlWebpackPlugin({
-		favicon: './src/favicon.ico',
-		template: './src/index.html',
-		inject: 'body',
-	})
+	// new HtmlWebpackPlugin({
+	// 	favicon: './src/favicon.ico',
+	// 	template: './src/index.html',
+	// 	inject: 'body',
+	// })
 ];
 // 非开发环境对js进行混淆，以及清除老版 dist 文件
 if (process.env.NODE_ENV !== 'DEV') {
-	plugins.push(new UglifyJsPlugin(), new CleanWebpackPlugin(['dist']));
+	// plugins.push(new UglifyJsPlugin(), new CleanWebpackPlugin(['dist']));
 }
 
 
@@ -98,7 +98,7 @@ const config = {
 	plugins: plugins,
 	resolve: {
 		alias: {
-			'vue': 'vue/dist/vue.js'
+			'react': 'react/dist/react.js'
 		}
 	}
 };

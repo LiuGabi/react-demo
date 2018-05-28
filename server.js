@@ -16,7 +16,6 @@ let devServer = new webpackDevServer(compiler, {
 	proxy: [{
 		context: ['/api'],
 		target: 'http://10.100.15.17:8080',
-		// target: 'http://10.100.15.17:7070', //测试
 		secure: false
 	}]
 });
