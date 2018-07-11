@@ -2,7 +2,7 @@
 const webpack = require('webpack');
 const path  = require('path');
 
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -12,7 +12,7 @@ const plugins = [
 	// new webpack.DefinePlugin({
 	// 	'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
 	// }),
-	new ExtractTextPlugin({
+	new MiniCssExtractPlugin({
 		filename: "static/css/[name].[hash].css",
 		disable: false,
 		allChunks: true
@@ -31,6 +31,7 @@ if (process.env.NODE_ENV !== 'DEV') {
 
 
 const config = {
+	mode: process.env.NODE_ENV,
 	entry: {
 		app: './src/app.js', // 程序启动入口
 	},
@@ -50,34 +51,10 @@ const config = {
 			}
 		}, {
 			test: /\.less$/,
-			use: ExtractTextPlugin.extract({
-				use: [{
-					loader: "css-loader",
-					options:{
-						sourceMap: process.env.NODE_ENV === 'DEV',
-						minimize: process.env.NODE_ENV !== 'DEV'
-					}
-				}, {
-					loader: "less-loader",
-					options:{
-						sourceMap: process.env.NODE_ENV === 'DEV',
-						minimize: process.env.NODE_ENV !== 'DEV'
-					}
-				}],
-				fallback: "style-loader"
-			})
+			use: [MiniCssExtractPlugin.loader, "less-loader"]
 		}, {
 			test: /\.css$/,
-			use: ExtractTextPlugin.extract({
-				use: [{
-					loader: "css-loader",
-					options:{
-						sourceMap: process.env.NODE_ENV === 'DEV',
-						minimize: process.env.NODE_ENV !== 'DEV'
-					}
-				}],
-				fallback: "style-loader"
-			})
+			use: [MiniCssExtractPlugin.loader, "css-loader"]
 		}, {
 			test: /\.js$/,
 			exclude: /(node_modules|bower_components)/,
