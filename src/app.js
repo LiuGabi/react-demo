@@ -1,3 +1,4 @@
-console.log('test')
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-console.log('aaa')
+ReactDOM.render(<h1>Hello! I love u</h1>, document.getElementById('root'));
