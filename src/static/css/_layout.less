@@ -1,0 +1,37 @@
+body {
+	font-weight: 400;
+    font-size: 14px;
+	font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei, Noto Sans, Noto Sans CJK SC, SimSun, sans-serif;
+	color: @body-color;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+	-webkit-appearance: none !important;
+}
+input[type="number"]{
+	-moz-appearance: textfield;
+}
+
+html, body,
+#root,
+.layout {
+	height: 100%;
+	min-height: 100%;
+}
+.layout {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.header {
+	height: 30px;
+	color: @white;
+	background-color: @header-color;
+}
+
+.footer {
+	height: 50px;
+	border-top: 1px solid @border-color;
+}

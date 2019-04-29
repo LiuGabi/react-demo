@@ -37,7 +37,7 @@ module.exports = (env, arg) => {
 		mode: arg.mode,
 		context: path.resolve(__dirname, './src'),
 		entry: {
-			app: './app.js', // 程序启动入口
+			app: './app.jsx', // 程序启动入口
 		},
 		output: {
 			path: path.resolve(__dirname, 'dist'),
@@ -56,7 +56,7 @@ module.exports = (env, arg) => {
 				test: /\.(le|c)ss$/,
 				use: [devMode ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'less-loader'],
 			}, {
-				test: /\.js$/,
+				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
 				loader: "babel-loader"
 			}, {
