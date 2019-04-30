@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import Header from './header.jsx';
 import Content from './content.jsx';
