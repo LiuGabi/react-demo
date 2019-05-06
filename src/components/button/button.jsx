@@ -3,10 +3,12 @@ import React from 'react';
 class Button extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log(this.props);
+	}
+	handleClick() {
+		console.log(this)
 	}
 	render() {
-		return <button>{this.props.text}</button>;
+		return <button onClick={this.handleClick.bind(this)}>{this.props.text}</button>;
 	}
 }
 
